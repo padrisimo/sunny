@@ -13,11 +13,11 @@ NLP aproach app
 To run the backend
 
 ```
->npm run server
+> npm run server
 ```
 To run the UI (in a new terminal)
 
 ```
->npm start
+> npm start
 ```
 open a browser on localhost:8080
