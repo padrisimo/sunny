@@ -15,28 +15,58 @@ app.listen(PORT, function () {
   console.log('Server listening on ' + PORT);
 });
 
-var getCities = function (req, res, next)  {
-    var options = {
-        method: 'GET',
-        url: 'https://apidev.accuweather.com/locations/v1/topcities/50?apikey=hoArfRosT1215',
-        headers:
-          {},
-        json: true
-      };
+var getCities = function (req, res, next) {
+  var options = {
+    method: 'GET',
+    url: 'https://apidev.accuweather.com/locations/v1/topcities/50?apikey=hoArfRosT1215',
+    headers:
+      {},
+    json: true
+  };
 
-      request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-    
-        res.locals.cities = body;
-        next();
-    
-      });
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+
+    res.locals.cities = body;
+    next();
+
+  });
 }
 
 app.get('/weather', getCities, function (req, res, next) {
-    var keys = [];
-    res.locals.cities.map( city => {
-        keys.push(city.Key)
+  var reports = [];
+
+  var cityProcessed = 0;
+
+  res.locals.cities.map(city => {
+
+    var options = {
+      method: 'GET',
+      url: 'https://apidev.accuweather.com/currentconditions/v1/' + city.key + '307297.json?language=en&details=true&apikey=hoArfRosT1215',
+      headers:
+        {},
+      json: true
+    };
+
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+      reports.push(body);
     });
-    console.log("array of keys", keys);  
+
+    cityProcessed++;
+
+    if(cityProcessed === res.locals.cities.length) {
+      res.json(reports);
+    }
+  });
+  
+})
+
+app.get('/pedo', function(req, res){
+   var paridas = [{
+    hola: "soy un pedo"
+  },{
+    holahola: "soy tambien un pedo"
+  }]
+   res.json(paridas)
 })
