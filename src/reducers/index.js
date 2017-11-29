@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import reports from './reports_reducer';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  reports
 });
 
 export default rootReducer;

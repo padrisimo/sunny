@@ -26,6 +26,7 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-preset-stage-1": "^6.1.18",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
@@ -33,6 +34,7 @@
     "lodash": "^3.10.1",
     "nodemon": "^1.12.1",
     "react": "^0.14.3",
+    "react-autocomplete": "^1.7.2",
     "react-dom": "^0.14.3",
     "react-redux": "4.3.0",
     "react-router": "^2.0.1",

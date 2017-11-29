@@ -49,8 +49,9 @@ var getReports = function(req, res, next){
         request(options, function (error, response, body) {
           if (error) throw new Error(error);
           counter++;
-          res.locals.reports.push(body);
-          if(counter === 20 ){
+          body[0].LocalizedName = city.LocalizedName;
+          res.locals.reports.push(body[0]);
+          if(counter === 50 ){
             next();
           }
         });
