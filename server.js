@@ -34,7 +34,9 @@ var getCities = function (req, res, next)  {
 }
 
 app.get('/weather', getCities, function (req, res, next) {
-    
-    res.locals.cities.map( city => console.log(city.Key) )
-      
+    var keys = [];
+    res.locals.cities.map( city => {
+        keys.push(city.Key)
+    });
+    console.log("array of keys", keys);  
 })
