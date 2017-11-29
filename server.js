@@ -18,7 +18,7 @@ app.listen(PORT, function () {
 var getCities = function (req, res, next)  {
     var options = {
         method: 'GET',
-        url: 'http://apidev.accuweather.com/locations/v1/topcities/50?apikey=hoArfRosT1215',
+        url: 'https://apidev.accuweather.com/locations/v1/topcities/50?apikey=hoArfRosT1215',
         headers:
           {},
         json: true
